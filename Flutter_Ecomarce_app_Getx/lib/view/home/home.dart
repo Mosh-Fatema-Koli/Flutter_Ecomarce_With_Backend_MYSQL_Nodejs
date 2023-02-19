@@ -1,0 +1,138 @@
+
+import 'package:banner_carousel/banner_carousel.dart';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_ecomarce_app_getx/view/cat/categories.dart';
+import 'package:flutter_ecomarce_app_getx/view/home/popular.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+      body: ListView(
+
+        children: <Widget>[
+
+          /// Carousel FullScreen
+          BannerCarousel.fullScreen(
+            banners: BannerImages.listBanners,
+            height: 200,
+            animation: false,
+            initialPage: 1,
+            // OR pageController: PageController(initialPage: 6),
+          ),
+
+
+          SizedBox(
+            height: 20,
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: TextField(
+              maxLines: 1,
+              minLines: 1,
+
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                  focusedBorder:  OutlineInputBorder(
+                    borderSide:
+                    BorderSide(width: 3, color: Colors.blueAccent), //<-- SEE HERE
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                    BorderSide(width: 3, color: Colors.blueAccent), //<-- SEE HERE
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  hintText: "Search",
+                  suffixIcon: IconButton(onPressed: (){},icon: Icon(Icons.search),)
+              ),
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("Catagories",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+          ),
+
+
+          Container(
+              height: 120,
+              child: CatagoriesScreen()),
+
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Container(
+              height: 150,
+              color: Colors.lightBlue,
+              child: Image.asset("images/banner.jpg",fit: BoxFit.cover,),
+
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("Popular Items",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+          ),
+          Container(
+              height: 250,
+              child: PopularScreen()),
+
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("Flash Sales",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+          ),
+          Container(
+            height: 250,
+            child: PopularScreen(),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("Fresh Vegetables",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+          ),
+          Container(
+              height: 250,
+              child: PopularScreen()),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("Fresh Fruits",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+          ),
+          Container(
+              height: 250,
+              child: PopularScreen()),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("Offers",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+          ),
+          Container(
+              height: 250,
+              child: PopularScreen()),
+          SizedBox(
+            height: 10,
+          )
+
+        ],
+      ),
+    );
+  }
+}
+
+class BannerImages {
+  static const String banner4 = "https://img.freepik.com/free-vector/hand-drawn-vegetables-supermarket-twitter-header_23-2149385522.jpg?auto=format&h=200";
+  static const String banner1 = "https://play-lh.googleusercontent.com/kvaPFPHuLufB1rbLehs9LukdubfLfD02Encv16k55Kth-zthVtBrT77mLoobSBPpGw=w526-h296-rw";
+  static const String banner2 = "https://i.pinimg.com/474x/bb/b2/26/bbb226401ef104c0abc1ab0b9209b370.jpg";
+  static const String banner3 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdk1urD8pPjSSLAWZPec35ahY77JRTnsluONyUMnxAzK0dpilrkTnL2wqZEajs7bHXpUU&usqp=CAU";
+
+
+  static List<BannerModel> listBanners = [
+    BannerModel(imagePath: banner1, id: "1"),
+    BannerModel(imagePath: banner2, id: "2"),
+    BannerModel(imagePath: banner3, id: "3"),
+    BannerModel(imagePath: banner4, id: "4"),
+  ];
+}
